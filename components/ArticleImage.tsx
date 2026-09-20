@@ -1,4 +1,4 @@
-const PALETTE = ["#7a2e2e", "#3c4a5e", "#8a7350", "#4a5a3c"];
+const PALETTE = ["#4d061c", "#1c1210", "#5c5147"];
 
 function hash(input: string) {
   let h = 0;

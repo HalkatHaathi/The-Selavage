@@ -4,7 +4,7 @@ export function CategoryTag({ category, name }: { category: string; name: string
   return (
     <Link
       href={`/${category}`}
-      className="text-xs uppercase tracking-wide text-accent hover:underline"
+      className="inline-block bg-accent text-[#f3ede0] text-[11px] uppercase tracking-[0.15em] px-2.5 py-1 hover:opacity-90"
     >
       {name}
     </Link>

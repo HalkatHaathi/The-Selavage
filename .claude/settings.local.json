@@ -9,7 +9,11 @@
       "Bash(node -e \"console.log\\(require.resolve\\('@sanity/image-url'\\)\\)\")",
       "Bash(node -e \"const p=require\\('@sanity/image-url/package.json'\\); console.log\\(JSON.stringify\\(p.exports||p.typings||p.types\\)\\)\")",
       "Bash(npm run *)",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(taskkill //PID 25088 //F)",
+      "Bash(tasklist //FI \"PID eq 25088\")",
+      "Bash(powershell -Command \"Stop-Process -Id 25088 -Force\")"
     ]
   }
 }

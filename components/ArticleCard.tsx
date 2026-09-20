@@ -17,7 +17,7 @@ export default function ArticleCard({ article }: { article: Article }) {
         />
       </Link>
       {category && <CategoryTag category={category.slug} name={category.name} />}
-      <h3 className="font-display text-xl mt-1 leading-snug">
+      <h3 className="font-display text-xl mt-2 leading-snug">
         <Link href={`/articles/${article.slug}`} className="group-hover:text-accent">
           {article.title}
         </Link>

@@ -10,18 +10,21 @@ const navLinks = [
 
 export default function Header() {
   return (
-    <header className="border-b border-rule bg-background">
-      <div className="mx-auto max-w-6xl px-4 pt-8 pb-4 text-center">
+    <header className="bg-background sticky top-0 z-30">
+      <div className="mx-auto max-w-6xl px-4 flex items-center justify-between text-[11px] uppercase tracking-[0.2em] text-foreground-muted py-2 border-b border-rule">
+        <span>Vol. 01 — 2026</span>
+        <span className="hidden sm:inline text-accent">No Shop. No Fast Fashion.</span>
+        <span>Est. 2026</span>
+      </div>
+      <div className="mx-auto max-w-6xl px-4 py-6 flex items-center justify-center">
         <Link href="/" className="inline-block">
-          <span className="font-display text-4xl sm:text-5xl font-extrabold tracking-tight">
+          <span className="font-display text-5xl sm:text-6xl font-black tracking-tight">
             The Selvage
           </span>
         </Link>
-        <p className="mt-2 text-xs uppercase tracking-[0.25em] text-foreground-muted">
-          Menswear &amp; Womenswear, Considered Slowly
-        </p>
       </div>
-      <nav className="selvage-edge border-t border-rule">
+      <div className="h-[3px] bg-accent" />
+      <nav className="border-b border-rule">
         <div className="mx-auto max-w-6xl px-4 py-3 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm uppercase tracking-wide">
           {navLinks.map((link) => (
             <Link

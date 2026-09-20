@@ -3,11 +3,11 @@
 :root {
   --background: #f3ede0;
   --paper: #eee6d3;
-  --foreground: #241f1c;
+  --foreground: #1c1210;
   --foreground-muted: #5c5147;
-  --accent: #7a2e2e;
-  --accent-secondary: #3c4a5e;
-  --rule: rgba(36, 31, 28, 0.16);
+  --accent: #4d061c;
+  --accent-secondary: #1c1210;
+  --rule: rgba(28, 18, 16, 0.16);
 }
 
 @theme inline {
@@ -41,27 +41,6 @@ body {
 
 .rule {
   border-color: var(--rule);
-}
-
-.selvage-edge {
-  position: relative;
-}
-
-.selvage-edge::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 3px;
-  background-image: repeating-linear-gradient(
-    90deg,
-    var(--accent) 0,
-    var(--accent) 6px,
-    transparent 6px,
-    transparent 12px
-  );
-  opacity: 0.55;
 }
 
 a {
