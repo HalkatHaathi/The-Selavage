@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm -v)",
+      "Bash(npx --yes create-next-app@latest . --typescript --tailwind --eslint --app --no-src-dir --import-alias \"@/*\" --use-npm --turbopack)",
+      "Bash(npx --yes create-next-app@latest the-selvage --typescript --tailwind --eslint --app --no-src-dir --import-alias \"@/*\" --use-npm --turbopack)",
+      "Bash(npm install *)",
+      "Bash(npx tsc *)",
+      "Bash(node -e \"console.log\\(require.resolve\\('@sanity/image-url'\\)\\)\")",
+      "Bash(node -e \"const p=require\\('@sanity/image-url/package.json'\\); console.log\\(JSON.stringify\\(p.exports||p.typings||p.types\\)\\)\")",
+      "Bash(npm run *)",
+      "Bash(git add *)"
+    ]
+  }
+}

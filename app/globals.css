@@ -1,26 +1,69 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f3ede0;
+  --paper: #eee6d3;
+  --foreground: #241f1c;
+  --foreground-muted: #5c5147;
+  --accent: #7a2e2e;
+  --accent-secondary: #3c4a5e;
+  --rule: rgba(36, 31, 28, 0.16);
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-paper: var(--paper);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-accent: var(--accent);
+  --color-accent-secondary: var(--accent-secondary);
+  --color-rule: var(--rule);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background: var(--background);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), Garamond, "Times New Roman", serif;
+  background-image:
+    radial-gradient(rgba(36, 31, 28, 0.05) 0.5px, transparent 0.5px);
+  background-size: 3px 3px;
+}
+
+.font-display {
+  font-family: var(--font-display), Georgia, serif;
+}
+
+.rule {
+  border-color: var(--rule);
+}
+
+.selvage-edge {
+  position: relative;
+}
+
+.selvage-edge::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--accent) 0,
+    var(--accent) 6px,
+    transparent 6px,
+    transparent 12px
+  );
+  opacity: 0.55;
+}
+
+a {
+  color: inherit;
 }
