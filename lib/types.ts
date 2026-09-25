@@ -1,18 +1,15 @@
-export type CategorySlug =
-  | "menswear"
-  | "womenswear"
-  | "style-guides"
-  | "trends-commentary";
+import type { PortableTextBlock } from "@portabletext/react";
 
 export interface Category {
-  slug: CategorySlug;
+  slug: string;
   name: string;
-  description: string;
+  description?: string;
 }
 
 export interface Author {
   name: string;
-  bio: string;
+  bio?: string;
+  avatarUrl?: string;
 }
 
 export interface Article {
@@ -20,11 +17,11 @@ export interface Article {
   slug: string;
   dek?: string;
   featuredImage: {
-    src: string;
+    url: string;
     alt: string;
   };
-  bodyHtml: string;
-  category: CategorySlug;
+  body: PortableTextBlock[];
+  category: Category | null;
   tags: string[];
   author: Author;
   publishDate: string;

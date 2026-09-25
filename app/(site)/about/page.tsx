@@ -1,18 +1,24 @@
 import type { Metadata } from "next";
-import { author } from "@/lib/data/author";
+import { getFeaturedAuthorBio } from "@/lib/sanity/queries";
 
 export const metadata: Metadata = {
   title: "About",
   description: "The editorial mission behind The Selvage, and who writes it.",
 };
 
-export default function AboutPage() {
+export const revalidate = 60;
+
+const fallbackBio =
+  "The Selvage is written from a workbench view of fashion — more interested in how a garment is built than how fast it sold. Add an Author document in /studio to replace this placeholder.";
+
+export default async function AboutPage() {
+  const bio = (await getFeaturedAuthorBio()) ?? fallbackBio;
   return (
     <div className="mx-auto max-w-2xl px-4 py-16">
-      <h1 className="font-display text-4xl mb-8 text-center">About &amp; Masthead</h1>
+      <h1 className="font-display text-4xl font-black uppercase tracking-tight mb-8 text-center">About &amp; Masthead</h1>
 
       <section className="mb-12">
-        <h2 className="font-display text-2xl mb-4">Why &ldquo;The Selvage&rdquo;</h2>
+        <h2 className="font-display text-2xl font-extrabold uppercase tracking-tight mb-4">Why &ldquo;The Selvage&rdquo;</h2>
         <div className="space-y-5 text-lg leading-relaxed">
           <p>
             A selvage is the self-finished edge of a woven fabric — the part
@@ -38,13 +44,13 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="mb-12 border-t border-rule pt-10">
-        <h2 className="font-display text-2xl mb-4">The Author</h2>
-        <p className="text-lg leading-relaxed">{author.bio}</p>
+      <section className="mb-12 border-t-2 border-rule pt-10">
+        <h2 className="font-display text-2xl font-extrabold uppercase tracking-tight mb-4">The Author</h2>
+        <p className="text-lg leading-relaxed">{bio}</p>
       </section>
 
-      <section className="border-t border-rule pt-10">
-        <h2 className="font-display text-2xl mb-4">Get in Touch</h2>
+      <section className="border-t-2 border-rule pt-10">
+        <h2 className="font-display text-2xl font-extrabold uppercase tracking-tight mb-4">Get in Touch</h2>
         <p className="text-lg leading-relaxed">
           Reach The Selvage at{" "}
           <a href="mailto:editor@theselvage.example.com" className="text-accent hover:underline">

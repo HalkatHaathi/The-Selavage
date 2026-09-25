@@ -25,10 +25,11 @@ export default function SearchBar({ compact = false }: { compact?: boolean }) {
         placeholder="Search articles, tags…"
         aria-label="Search articles"
         className="w-full bg-transparent border-b border-rule px-1 py-1 text-sm placeholder:text-foreground-muted focus:outline-none focus:border-accent"
+        autoFocus={compact}
       />
       <button
         type="submit"
-        className="text-xs uppercase tracking-wide text-accent hover:underline"
+        className="text-xs font-bold uppercase tracking-wide text-accent hover:underline"
       >
         Search
       </button>

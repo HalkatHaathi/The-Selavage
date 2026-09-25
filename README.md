@@ -50,6 +50,14 @@ npm run build    # production build
 npm run lint      # eslint
 ```
 
+If non-home routes fail in dev with **“Jest worker encountered … child process exceptions”**,
+stop every running `next dev` for this repo (only one instance should own the project),
+delete `.next/dev`, and start again:
+
+```bash
+npm run dev
+```
+
 ## Newsletter
 
 The signup form in `components/NewsletterSignup.tsx` is a placeholder.

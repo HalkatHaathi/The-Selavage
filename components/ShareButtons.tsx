@@ -23,13 +23,13 @@ export default function ShareButtons({
   }
 
   return (
-    <div className="flex items-center gap-4 text-xs uppercase tracking-wide">
-      <span className="text-foreground-muted">Share</span>
+    <div className="flex items-center gap-3 text-xs font-bold uppercase tracking-wide">
+      <span className="text-foreground-muted mr-1">Share</span>
       <a
         href={xHref}
         target="_blank"
         rel="noopener noreferrer"
-        className="text-accent hover:underline"
+        className="border border-rule px-3 py-1.5 hover:border-accent hover:text-accent transition-colors"
       >
         X
       </a>
@@ -37,11 +37,14 @@ export default function ShareButtons({
         href={pinterestHref}
         target="_blank"
         rel="noopener noreferrer"
-        className="text-accent hover:underline"
+        className="border border-rule px-3 py-1.5 hover:border-accent hover:text-accent transition-colors"
       >
         Pinterest
       </a>
-      <button onClick={copyLink} className="text-accent hover:underline">
+      <button
+        onClick={copyLink}
+        className="border border-rule px-3 py-1.5 hover:border-accent hover:text-accent transition-colors"
+      >
         {copied ? "Copied!" : "Copy link"}
       </button>
     </div>

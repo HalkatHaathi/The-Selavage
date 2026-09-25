@@ -10,7 +10,10 @@ const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET ?? "production";
 
 export default defineConfig({
   basePath: "/studio",
-  projectId,
+  // Falls back to a syntactically valid placeholder so the Studio shell can
+  // mount (and show a clear "not configured" state) instead of crashing with
+  // "Configuration must contain `projectId`" when no real project is set up.
+  projectId: projectId || "placeholder",
   dataset,
   schema: { types: schemaTypes },
   plugins: [structureTool(), visionTool()],

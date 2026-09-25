@@ -1,11 +1,24 @@
 import type { Metadata } from "next";
-import { getAllArticlesSorted } from "@/lib/data/articles";
+import { getAllArticlesSorted } from "@/lib/sanity/queries";
 import ArticleCard from "@/components/ArticleCard";
 import SearchBar from "@/components/SearchBar";
 
 export const metadata: Metadata = {
   title: "Search",
 };
+
+export const revalidate = 60;
+
+function plainTextFromBody(body: unknown): string {
+  if (!Array.isArray(body)) return "";
+  return body
+    .map((block) => {
+      if (!block || typeof block !== "object" || !("children" in block)) return "";
+      const children = (block as { children?: { text?: string }[] }).children;
+      return (children ?? []).map((c) => c.text ?? "").join(" ");
+    })
+    .join(" ");
+}
 
 export default async function SearchPage({
   searchParams,
@@ -16,8 +29,14 @@ export default async function SearchPage({
   const query = q.trim().toLowerCase();
 
   const results = query
-    ? getAllArticlesSorted().filter((a) => {
-        const haystack = [a.title, a.dek ?? "", a.bodyHtml, ...a.tags, a.category]
+    ? (await getAllArticlesSorted()).filter((a) => {
+        const haystack = [
+          a.title,
+          a.dek ?? "",
+          plainTextFromBody(a.body),
+          ...a.tags,
+          a.category?.name ?? "",
+        ]
           .join(" ")
           .toLowerCase();
         return haystack.includes(query);
@@ -25,8 +44,8 @@ export default async function SearchPage({
     : [];
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10">
-      <h1 className="font-display text-4xl mb-6">Search</h1>
+    <div className="mx-auto max-w-[1400px] px-8 lg:px-16 py-10">
+      <h1 className="font-display text-4xl font-black uppercase tracking-tight mb-6">Search</h1>
       <div className="mb-10">
         <SearchBar />
       </div>
